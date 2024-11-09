@@ -16,6 +16,13 @@
   continue-list = <UNDERSCORE MINUS DELETE BACKSPACE>;
 };
 
+/*
+ * Layers definition
+ */
+
+#define DFT 0
+#define NUM 1
+#define FN  2
 
 / {
         keymap {
