@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 
 /*
- * CapsWord
+ * CAPSWORD CONFIGURATION
  */
 
 &caps_word {
@@ -17,14 +17,34 @@
 };
 
 /*
- * Layers definition
+ * LAYERS DEFINITION
  */
 
 #define DFT 0
 #define NUM 1
 #define FN  2
 
+/*
+ * START OF KEYMAP CONFIGURATION
+ */
+
 / {
+
+  /*
+   * COMBOS
+   */
+
+  combos {
+    compatible = "zmk,combos";
+    #binding-cells = <0>;
+	combo_semicol {
+      timeout-ms = <50>;
+	  layers = <1>;
+	  key-positions = <32 33>;
+	  bindings = <&kp SEMI>;
+	};
+  };
+
         keymap {
                 compatible = "zmk,keymap";
 
