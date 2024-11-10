@@ -121,7 +121,7 @@ behavior {
         //                          | GUI     | NUM TAB    | LSHIFT ENT |   | RSHIFT SPACE | SYM BSPC | FN |
         bindings = <
           &none      &kp Q      &kp W      &kp E       &kp R        &kp T            &kp Y            &kp U        &kp I       &kp O      &kp P          &term
-          &kp ESC    &mt LGUI A &mt LALT S &mt LCTRL D &mt LSHIFT F &kp G            &kp H            &mt RSHIFT J &mt RCTRL K &mt RALT L &mt RGUI GRAVE &kp SQT
+          &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G            &kp H            &hrm_r RSHIFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RGUI GRAVE &kp SQT
           &caps_word &kp Z      &kp X      &kp C       &kp V        &kp B            &kp N            &kp M        &kp COMMA   &kp DOT    &kp FSLH       &kp CAPS
                                            &kp LGUI    &td_num      &mt LSHIFT RET   &mt RSHIFT SPACE &lt SYM BSPC &sl FN
         >;
