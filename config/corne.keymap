@@ -125,6 +125,15 @@ behavior {
     tapping-term-ms = <250>;
     bindings = <&kp DOT>, <&kp QMARK>, <&m_ellipsis>;
   };
+
+  bspc_l: backspace {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "tap-preferred";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <150>;
+	bindings = <&kp>, <&kp>;
+  };
 };
 
   /*
@@ -143,7 +152,7 @@ behavior {
         &kp CLEAR  &kp Q         &kp W         &kp E          &kp R           &kp T            &kp Y            &kp U           &kp I          &kp O         &kp P             &m_term
         &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G            &kp H            &hrm_r RSHIFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RGUI SQT &kp GRAVE
         &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B            &kp N            &kp M           &kp COMMA      &dots      &kp INT1          &kp CAPS
-                                               &kp GUI       &lt NUM TAB         &mt LSHIFT RET   &mt RSHIFT SPACE &lt SYM BSPC    &kp RGUI
+                                               &kp GUI       &lt NUM TAB         &mt LSHIFT RET   &mt RSHIFT SPACE &bspc_l SYM BSPC    &kp RGUI
       >;
     };
 
