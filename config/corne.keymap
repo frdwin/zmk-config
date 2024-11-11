@@ -23,6 +23,7 @@
 #define DFT 0
 #define NUM 1
 #define SYM 2
+#define FN  3
 
 /*
  * KEYS DEFINITION FOR HOME ROW MODS
@@ -156,17 +157,17 @@ behavior {
       // -------------------------------------------------------------------------------------------------------------------------------
       // | CLEAR | Q      | W      | E       | R          | T          |   | Y            | U        | I       | O      | P      | TERM |
       // | ESC   | LGUI A | LALT S | LCTRL D | LSHIFT F   | G          |   | H            | RSHIFT J | RCTRL K | RALT L | RGUI ~ | '    |
-      // | CPSW  | Z      | X      | C       | V          | B          |   | N            | M        | ,       | .      | /      | '    |
-      //                           | TAB     | NUM        | LSHIFT ENT |   | RSHIFT SPACE | SYM BSPC | GUI     |
+      // | CPSW  | Z      | X      | C       | V          | B          |   | N            | M        | ,       | .      | /      | NONE |
+      //                           | TAB     | NUM        | LSHIFT ENT |   | RSHIFT SPACE | SYM BSPC | DEL     |
       bindings = <
         &kp CLEAR  &kp Q         &kp W         &kp E          &kp R           &kp T            &kp Y            &kp U           &kp I          &kp O         &kp P             &m_term
-        &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G            &kp H            &hrm_r RSHIFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RGUI SQT &kp LBRC
-        &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B            &kp N            &kp M           &kp COMMA      &dots      &kp INT1          &kp GRAVE
-                                               &kp GUI       &lt NUM TAB         &sse LSHIFT RET   &sse RSHIFT SPACE &bspc_l SYM BSPC    &kp RGUI
+        &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G            &kp H            &hrm_r RSHIFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RGUI SQT &kp GRAVE
+        &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B            &kp N            &kp M           &kp COMMA      &dots      &kp INT1          &none
+                                               &mo FN       &lt NUM TAB         &sse LSHIFT RET   &sse RSHIFT SPACE &bspc_l SYM BSPC    &kp DEL
       >;
     };
 
-  lower_layer {
+  numbers_layer {
 	// -----------------------------------------------------------------------------------------
 	// |  TAB | 1    | 2    | 3    | 4    | 5    |   | 6   | 7   | 8   | 9   | 0   | BSPC |
 	// |      | HOME | END  | PGUP | PGDN |      |   | LFT | DWN | UP  | RGT |     |      |
@@ -180,7 +181,7 @@ behavior {
       >;
     };
 
-    raise_layer {
+    symbols_layer {
       // -----------------------------------------------------------------------------------------
       // | NONE | BT0   | BT1  | BT2   | BT3   | BTCLR |   |  +  |  :  |  =  |     |       |     |
       // | TAB  | GUI   | ALT  | CTRL  | SHIFT | DEL   |   |  -  |  {  |  [  |  (  |  "|"  |     |
@@ -190,6 +191,15 @@ behavior {
         &none  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR   &kp PLUS &kp QMARK &kp EQUAL &kp GRAVE &kp LS(GRAVE) &trans
         &kp TAB &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT             &kp DEL      &kp MINUS &kp LS(RBKT)  &kp RBKT &kp LPAR &kp LS(NUBS) &trans
         &none &trans   &kp K_VOL_UP &kp K_VOL_DN &kp K_MUTE                      &trans       &kp UNDER &kp LS(BSLH)  &kp BSLH &kp RPAR &kp NUBS     &trans
+                                 &kp LGUI &trans                   &kp RET          &kp SPACE   &trans    &kp RALT
+      >;
+    };
+
+    fn_layer {
+      bindings = <
+        &kp SEMI &kp INT1 &kp INT2 &kp INT3 &kp INT4 &kp INT5 &kp INT6 &kp INT7 &kp INT8 &kp INT9 &kp COLON &kp NUHS
+        &kp TILDE2 &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT             &kp DEL      &kp MINUS &kp LS(RBKT)  &kp RBKT &kp LPAR &kp LS(NUBS) &trans
+        &kp PIPE &kp PIPE2   &kp K_VOL_UP &kp K_VOL_DN &kp K_MUTE                      &trans       &kp UNDER &kp LS(BSLH)  &kp BSLH &kp RPAR &kp NUBS     &trans
                                  &kp LGUI &trans                   &kp RET          &kp SPACE   &trans    &kp RALT
       >;
     };
