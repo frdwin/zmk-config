@@ -146,12 +146,12 @@ behavior {
       // -------------------------------------------------------------------------------------------------------------------------------
       // | CLEAR | Q      | W      | E       | R          | T          |   | Y            | U        | I       | O      | P      | TERM |
       // | ESC   | LGUI A | LALT S | LCTRL D | LSHIFT F   | G          |   | H            | RSHIFT J | RCTRL K | RALT L | RGUI ~ | '    |
-      // | CPSW  | Z      | X      | C       | V          | B          |   | N            | M        | ,       | .      | /      | CAPS |
+      // | CPSW  | Z      | X      | C       | V          | B          |   | N            | M        | ,       | .      | /      | '    |
       //                           | TAB     | NUM        | LSHIFT ENT |   | RSHIFT SPACE | SYM BSPC | GUI     |
       bindings = <
         &kp CLEAR  &kp Q         &kp W         &kp E          &kp R           &kp T            &kp Y            &kp U           &kp I          &kp O         &kp P             &m_term
-        &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G            &kp H            &hrm_r RSHIFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RGUI SQT &kp GRAVE
-        &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B            &kp N            &kp M           &kp COMMA      &dots      &kp INT1          &kp CAPS
+        &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G            &kp H            &hrm_r RSHIFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RGUI SQT &kp LBRC
+        &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B            &kp N            &kp M           &kp COMMA      &dots      &kp INT1          &kp GRAVE
                                                &kp GUI       &lt NUM TAB         &mt LSHIFT RET   &mt RSHIFT SPACE &bspc_l SYM BSPC    &kp RGUI
       >;
     };
@@ -172,14 +172,14 @@ behavior {
 
     raise_layer {
       // -----------------------------------------------------------------------------------------
-      // | NONE | BT1   | BT2  | BT3   | BT4   | BTCLR |   |  +  |  :  |  =  |     |       |     |
+      // | NONE | BT0   | BT1  | BT2   | BT3   | BTCLR |   |  +  |  :  |  =  |     |       |     |
       // | TAB  | GUI   | ALT  | CTRL  | SHIFT | DEL   |   |  -  |  {  |  [  |  (  |  "|"  |     |
       // | NONE |       | MUTE | VOLDN | VOLUP |       |   |  _  |  }  |  ]  |  )  | \     |     |
       //                | GUI  |       | ENT   |           | SPC |     | ALT |
       bindings = <
-        &none  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_CLR   &kp PLUS &kp QMARK &kp EQUAL &kp GRAVE &kp LS(GRAVE) &trans
+        &none  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR   &kp PLUS &kp QMARK &kp EQUAL &kp GRAVE &kp LS(GRAVE) &trans
         &kp TAB &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT             &kp DEL      &kp MINUS &kp LS(RBKT)  &kp RBKT &kp LPAR &kp LS(NUBS) &trans
-        &none &trans   &kp C_VOL_UP &kp C_VOL_DN &kp C_MUTE                      &trans       &kp UNDER &kp LS(BSLH)  &kp BSLH &kp RPAR &kp NUBS     &trans
+        &none &trans   &kp K_VOL_UP &kp K_VOL_DN &kp K_MUTE                      &trans       &kp UNDER &kp LS(BSLH)  &kp BSLH &kp RPAR &kp NUBS     &trans
                                  &kp LGUI &trans                   &kp RET          &kp SPACE   &trans    &kp RALT
       >;
     };
