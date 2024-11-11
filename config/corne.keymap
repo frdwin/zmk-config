@@ -150,13 +150,13 @@ behavior {
   lower_layer {
 	// -----------------------------------------------------------------------------------------
 	// |  TAB | 1    | 2    | 3    | 4    | 5    |   | 6   | 7   | 8   | 9   | 0   | BSPC |
-	// |      | HOME | END  | PGUP | PGDN | DEL  |   | LFT | DWN | UP  | RGT |     |      |
+	// |      | HOME | END  | PGUP | PGDN |      |   | LFT | DWN | UP  | RGT |     |      |
 	// | NONE | !    | @    | #    | $    | %    |   | ^   | &   | *   | (   | )   |      |
 	//                      | GUI  |      | ENT  |   | SPC |     | ALT |
       bindings = <
-  	  &kp TAB &kp N1   &kp N2  &kp N3    &kp N4    &kp N5      &kp N6    &kp N7   &kp N8    &kp N9    &kp N0   &kp BSPC
-  	  &trans  &kp HOME &kp END &kp PG_UP &kp PG_DN &kp DEL     &kp LEFT  &kp DOWN &kp UP    &kp RIGHT &trans   &trans
-  	  &none   &kp EXCL &kp AT  &kp HASH  &kp DLLR  &kp PRCNT   &kp LS(SQT) &kp AMPS &kp ASTRK &kp LPAR  &kp RPAR &trans
+  	  &kp TAB &kp N1    &kp N2    &kp N3    &kp N4   &kp N5      &kp N6    &kp N7   &kp N8    &kp N9    &kp N0   &kp BSPC
+  	  &trans  &kp PG_UP &kp PG_DN &kp HOME  &kp END  &trans     &kp LEFT  &kp DOWN &kp UP    &kp RIGHT &trans   &trans
+  	  &none   &kp EXCL  &kp AT    &kp HASH  &kp DLLR &kp PRCNT   &kp LS(SQT) &kp AMPS &kp ASTRK &kp LPAR  &kp RPAR &trans
   	                           &kp LGUI  &trans    &kp RET     &kp SPACE    &trans   &kp RALT
       >;
     };
@@ -164,12 +164,12 @@ behavior {
     raise_layer {
       // -----------------------------------------------------------------------------------------
       // | NONE |     |     |      |       |     |   |  +  |  :  |  =  |     |       |     |
-      // | TAB  | GUI | ALT | CTRL | SHIFT |     |   |  -  |  {  |  [  |  (  |  "|"  |     |
+      // | TAB  | GUI | ALT | CTRL | SHIFT | DEL |   |  -  |  {  |  [  |  (  |  "|"  |     |
       // | NONE |     |     |      |       |     |   |  _  |  }  |  ]  |  )  | \     |     |
       //                    | GUI  |       | ENT |   | SPC |     | ALT |
       bindings = <
         &none  &trans &trans &trans &trans &trans                  &kp PLUS &kp QMARK &kp EQUAL &kp GRAVE &kp LS(GRAVE) &trans
-        &kp TAB &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT &trans      &kp MINUS &kp LS(RBKT)  &kp RBKT &kp LPAR &kp LS(NUBS) &trans
+        &kp TAB &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT &kp DEL     &kp MINUS &kp LS(RBKT)  &kp RBKT &kp LPAR &kp LS(NUBS) &trans
         &none &trans   &trans &trans   &trans   &trans             &kp UNDER &kp LS(BSLH)  &kp BSLH &kp RPAR &kp NUBS     &trans
                                  &kp LGUI &trans   &kp RET         &kp SPACE   &trans    &kp RALT
       >;
