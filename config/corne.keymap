@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include "accents.dtsi"
 
 /*
  * CAPSWORD CONFIGURATION
@@ -23,7 +24,7 @@
 #define DFT 0
 #define NUM 1
 #define SYM 2
-#define FN  3
+#define ACC 3
 
 /*
  * KEYS DEFINITION FOR HOME ROW MODS
@@ -79,16 +80,6 @@
         , <&macro_release &kp LGUI>
         ;
     };
-
-    m_ellipsis: m_ellipsis {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings
-        = <&kp DOT>
-        , <&kp DOT>
-        , <&kp DOT>
-        ;
-    };
   };
 
 /*
@@ -120,13 +111,6 @@ behavior {
 	hold-trigger-on-release;
   };
 
-  dots: dots {
-    compatible = "zmk,behavior-tap-dance";
-    #binding-cells = <0>;
-    tapping-term-ms = <250>;
-    bindings = <&kp DOT>, <&kp QMARK>, <&m_ellipsis>;
-  };
-
   bspc_l: backspace {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
@@ -136,7 +120,7 @@ behavior {
 	bindings = <&mo>, <&kp>;
   };
 
-  sse: sse {
+  se_ss: se_ss {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "tap-preferred";
@@ -161,9 +145,9 @@ behavior {
       //                           | TAB     | NUM        | LSHIFT ENT |   | RSHIFT SPACE | SYM BSPC | DEL     |
       bindings = <
         &kp CLEAR  &kp Q         &kp W         &kp E          &kp R           &kp T            &kp Y            &kp U           &kp I          &kp O         &kp P             &m_term
-        &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G            &kp H            &hrm_r RSHIFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RGUI SQT &kp GRAVE
-        &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B            &kp N            &kp M           &kp COMMA      &dots      &kp INT1          &none
-                                               &mo FN       &lt NUM TAB         &sse LSHIFT RET   &sse RSHIFT SPACE &bspc_l SYM BSPC    &kp DEL
+        &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G            &kp H            &hrm_r RSHIFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RGUI SQT &sl ACC 
+        &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B            &kp N            &kp M           &kp COMMA      &kp DOT      &kp INT1          &kp GRAVE
+                                               &none       &lt NUM TAB         &se_ss LSHIFT RET   &se_ss RSHIFT SPACE &bspc_l SYM BSPC    &kp DEL
       >;
     };
 
@@ -177,7 +161,7 @@ behavior {
   	  &kp TAB &kp N1    &kp N2    &kp N3    &kp N4   &kp N5      &kp N6    &kp N7   &kp N8    &kp N9    &kp N0   &kp BSPC
   	  &trans  &kp PG_UP &kp PG_DN &kp HOME  &kp END  &trans     &kp LEFT  &kp DOWN &kp UP    &kp RIGHT &trans   &trans
   	  &none   &kp EXCL  &kp AT    &kp HASH  &kp DLLR &kp PRCNT   &kp LS(SQT) &kp AMPS &kp ASTRK &kp LPAR  &kp RPAR &trans
-  	                           &kp LGUI  &trans    &kp RET     &kp SPACE    &trans   &kp RALT
+  	                           &kp LGUI  &trans    &trans     &trans    &trans   &kp RALT
       >;
     };
 
@@ -191,16 +175,16 @@ behavior {
         &none  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR   &kp PLUS &kp QMARK &kp EQUAL &kp GRAVE &kp LS(GRAVE) &trans
         &kp TAB &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT             &kp DEL      &kp MINUS &kp LS(RBKT)  &kp RBKT &kp LPAR &kp LS(NUBS) &trans
         &none &trans   &kp K_VOL_UP &kp K_VOL_DN &kp K_MUTE                      &trans       &kp UNDER &kp LS(BSLH)  &kp BSLH &kp RPAR &kp NUBS     &trans
-                                 &kp LGUI &trans                   &kp RET          &kp SPACE   &trans    &kp RALT
+                                 &kp LGUI &trans                   &trans          &trans   &trans    &kp RALT
       >;
     };
 
-    fn_layer {
+    acc_layer {
       bindings = <
-        &kp SEMI &kp INT1 &kp INT2 &kp INT3 &kp INT4 &kp INT5 &kp INT6 &kp INT7 &kp INT8 &kp INT9 &kp COLON &kp NUHS
-        &kp TILDE2 &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT             &kp DEL      &kp MINUS &kp LS(RBKT)  &kp RBKT &kp LPAR &kp LS(NUBS) &trans
-        &kp PIPE &kp PIPE2   &kp K_VOL_UP &kp K_VOL_DN &kp K_MUTE                      &trans       &kp UNDER &kp LS(BSLH)  &kp BSLH &kp RPAR &kp NUBS     &trans
-                                 &kp LGUI &trans                   &kp RET          &kp SPACE   &trans    &kp RALT
+      &trans &trans &trans &eacu  &trans &trans   &trans &uacu  &iacu  &oacu  &trans &trans 
+      &trans &aacu  &trans &trans &trans &trans   &trans &trans &trans &trans &trans &trans 
+      &trans &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans &trans 
+                           &trans &trans &trans   &trans &trans &trans
       >;
     };
   };
