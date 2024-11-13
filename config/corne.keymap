@@ -7,7 +7,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include "accents.dtsi"
 
 /*
  * CAPSWORD CONFIGURATION
@@ -24,7 +23,6 @@
 #define DFT 0
 #define NUM 1
 #define SYM 2
-#define ACC 3
 
 /*
  * KEYS DEFINITION FOR HOME ROW MODS
@@ -41,32 +39,6 @@
 / {
 
   /*
-   * COMBOS
-   */
-
-  combos {
-    compatible = "zmk,combos";
-	combo_semicol {
-      timeout-ms = <60>;
-	  layers = <0>;
-	  key-positions = <32 33>;
-	  bindings = <&kp FSLH>;
-	};
-
-    combo_caps {
-      timeout-ms = <60>;
-      key-positions = <38 39>;
-      bindings = <&kp CAPS>;
-    };
-
-    combo_cedilla {
-      timeout-ms = <60>;
-      key-positions = <26 27>;
-      bindings = <&kp SEMI>;
-    };
-  };
-
-  /*
    * MACROS
    */
   
@@ -80,6 +52,43 @@
         , <&macro_release &kp LGUI>
         ;
     };
+
+    m_ced: m_ced {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings
+        = <&kp SQT>
+        , <&kp C>
+        ;
+    };
+  };
+
+  /*
+   * COMBOS
+   */
+
+  combos {
+    compatible = "zmk,combos";
+
+	combo_semicol {
+      timeout-ms = <60>;
+	  layers = <0>;
+	  key-positions = <32 33>;
+	  bindings = <&kp SEMI>;
+	};
+
+    combo_caps {
+      timeout-ms = <60>;
+      key-positions = <38 39>;
+      bindings = <&kp CAPS>;
+    };
+
+    combo_cedilla {
+      timeout-ms = <60>;
+      layers = <0>;
+      key-positions = <26 27>;
+      bindings = <&m_ced>;
+    };
   };
 
 /*
@@ -87,7 +96,7 @@
  */
 
 behavior {
-  hrm_l: hrm_left {
+  hrm_l: hrm_l {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "balanced";
@@ -99,7 +108,7 @@ behavior {
 	hold-trigger-on-release;
   };
 
-  hrm_r: hrm_right {
+  hrm_r: hrm_r {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "balanced";
@@ -111,7 +120,7 @@ behavior {
 	hold-trigger-on-release;
   };
 
-  bspc_l: backspace {
+  bspc_l: bspc_l {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "balanced";
@@ -120,7 +129,7 @@ behavior {
 	bindings = <&mo>, <&kp>;
   };
 
-  se_ss: se_ss {
+  shift_l: shift_l {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "tap-preferred";
@@ -128,6 +137,13 @@ behavior {
     tapping-term-ms = <230>;
     quick-tap-ms = <200>;
     bindings = <&kp>, <&kp>;
+  };
+
+  acc: acc {
+    compatible = "zmk,behavior-mod-morph";
+    #binding-cells = <0>;
+    bindings = <&kp SQT>, <&kp GRAVE>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
   };
 };
 
@@ -137,54 +153,31 @@ behavior {
 
   keymap {
     compatible = "zmk,keymap";
+
     default_layer {
-      // -------------------------------------------------------------------------------------------------------------------------------
-      // | CLEAR | Q      | W      | E       | R          | T          |   | Y            | U        | I       | O      | P      | TERM |
-      // | ESC   | LGUI A | LALT S | LCTRL D | LSHIFT F   | G          |   | H            | RSHIFT J | RCTRL K | RALT L | RGUI ~ | '    |
-      // | CPSW  | Z      | X      | C       | V          | B          |   | N            | M        | ,       | .      | /      | NONE |
-      //                           | TAB     | NUM        | LSHIFT ENT |   | RSHIFT SPACE | SYM BSPC | DEL     |
       bindings = <
-        &kp CLEAR  &kp Q         &kp W         &kp E          &kp R           &kp T            &kp Y            &kp U           &kp I          &kp O         &kp P             &m_term
-        &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G            &kp H            &hrm_r RSHIFT J &hrm_r RCTRL K &hrm_r RALT L &hrm_r RGUI SQT &sl ACC 
-        &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B            &kp N            &kp M           &kp COMMA      &kp DOT      &kp INT1          &kp GRAVE
-                                               &none       &lt NUM TAB         &se_ss LSHIFT RET   &se_ss RSHIFT SPACE &bspc_l SYM BSPC    &kp DEL
+        &kp CLEAR  &kp Q         &kp W         &kp E          &kp R           &kp T                 &kp Y                 &kp U            &kp I          &kp O         &kp P             &m_term
+        &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G                 &kp H                 &hrm_r RSHIFT J  &hrm_r RCTRL K &hrm_r RALT L &hrm_r RGUI TILDE &acc 
+        &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B                 &kp N                 &kp M            &kp COMMA      &kp DOT       &kp FSLH          &none
+                                               &none          &lt NUM TAB     &shift_l LSHIFT RET   &shift_l RSHIFT SPACE &bspc_l SYM BSPC &kp DEL
       >;
     };
 
   numbers_layer {
-	// -----------------------------------------------------------------------------------------
-	// |  TAB | 1    | 2    | 3    | 4    | 5    |   | 6   | 7   | 8   | 9   | 0   | BSPC |
-	// |      | HOME | END  | PGUP | PGDN |      |   | LFT | DWN | UP  | RGT |     |      |
-	// | NONE | !    | @    | #    | $    | %    |   | ^   | &   | *   | (   | )   |      |
-	//                      | GUI  |      | ENT  |   | SPC |     | ALT |
       bindings = <
-  	  &kp TAB &kp N1    &kp N2    &kp N3    &kp N4   &kp N5      &kp N6    &kp N7   &kp N8    &kp N9    &kp N0   &kp BSPC
-  	  &trans  &kp PG_UP &kp PG_DN &kp HOME  &kp END  &trans     &kp LEFT  &kp DOWN &kp UP    &kp RIGHT &trans   &trans
-  	  &none   &kp EXCL  &kp AT    &kp HASH  &kp DLLR &kp PRCNT   &kp LS(SQT) &kp AMPS &kp ASTRK &kp LPAR  &kp RPAR &trans
-  	                           &kp LGUI  &trans    &trans     &trans    &trans   &kp RALT
+  	    &kp TAB    &kp N1        &kp N2        &kp N3         &kp N4          &kp N5                &kp N6                &kp N7           &kp N8         &kp N9        &kp N0            &kp BSPC
+  	    &trans     &kp PG_UP     &kp PG_DN     &kp HOME       &kp END         &trans                &kp LEFT              &kp DOWN         &kp UP         &kp RIGHT     &trans            &trans
+  	    &none      &kp EXCL      &kp AT        &kp HASH       &kp DLLR        &kp PRCNT             &kp CARET             &kp AMPS         &kp ASTRK      &kp LPAR      &kp RPAR          &trans
+  	                                           &kp LGUI       &trans          &trans                &trans                &trans           &kp RALT
       >;
     };
 
     symbols_layer {
-      // -----------------------------------------------------------------------------------------
-      // | NONE | BT0   | BT1  | BT2   | BT3   | BTCLR |   |  +  |  :  |  =  |     |       |     |
-      // | TAB  | GUI   | ALT  | CTRL  | SHIFT | DEL   |   |  -  |  {  |  [  |  (  |  "|"  |     |
-      // | NONE |       | MUTE | VOLDN | VOLUP |       |   |  _  |  }  |  ]  |  )  | \     |     |
-      //                | GUI  |       | ENT   |           | SPC |     | ALT |
       bindings = <
-        &none  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR   &kp PLUS &kp QMARK &kp EQUAL &kp GRAVE &kp LS(GRAVE) &trans
-        &kp TAB &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT             &kp DEL      &kp MINUS &kp LS(RBKT)  &kp RBKT &kp LPAR &kp LS(NUBS) &trans
-        &none &trans   &kp K_VOL_UP &kp K_VOL_DN &kp K_MUTE                      &trans       &kp UNDER &kp LS(BSLH)  &kp BSLH &kp RPAR &kp NUBS     &trans
+        &none  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR   &kp PLUS &kp COLON &kp EQUAL &kp SQT &kp DQT &trans
+        &kp TAB &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT             &kp DEL      &kp MINUS &kp LBRC  &kp LBKT &kp LPAR &kp PIPE &trans
+        &none &trans   &kp K_VOL_UP &kp K_VOL_DN &kp K_MUTE        &trans       &kp UNDER &kp RBRC  &kp RBKT &kp RPAR &kp BSLH     &trans
                                  &kp LGUI &trans                   &trans          &trans   &trans    &kp RALT
-      >;
-    };
-
-    acc_layer {
-      bindings = <
-      &trans &trans &trans &eacu  &trans &trans   &trans &uacu  &iacu  &oacu  &trans &trans 
-      &trans &aacu  &trans &trans &trans &trans   &trans &trans &trans &trans &trans &trans 
-      &trans &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans &trans 
-                           &trans &trans &trans   &trans &trans &trans
       >;
     };
   };
