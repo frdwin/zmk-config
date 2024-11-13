@@ -43,23 +43,17 @@
    */
   
   macros {
-    m_hello: m_hello {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings
-        = <&macro_press &kp LGUI>
-        , <&macro_tap &kp RET>
-        , <&macro_release &kp LGUI>
-        ;
-    };
 
     m_ced: m_ced {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings
-        = <&kp SQT>
-        , <&kp C>
-        ;
+      bindings = <&kp SQT &kp C>;
+    };
+
+    m_dqt_spc: m_dqt_spc {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&kp DQT &kp SPC>;
     };
   };
 
@@ -88,6 +82,12 @@
       layers = <0>;
       key-positions = <26 27>;
       bindings = <&m_ced>;
+    };
+
+    combo_dqt {
+      timeout-ms = <60>;
+      key-positions = <7 8>;
+      bindings = <&m_dqt_spc>;
     };
   };
 
@@ -188,7 +188,7 @@ behavior {
 
     default_layer {
       bindings = <
-        &kp CLEAR  &kp Q         &kp W         &kp E          &kp R           &kp T                 &kp Y                 &kp U            &kp I          &kp O         &kp P                   &m_hello
+        &kp CLEAR  &kp Q         &kp W         &kp E          &kp R           &kp T                 &kp Y                 &kp U            &kp I          &kp O         &kp P                   &kp BSPC
         &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G                 &kp H                 &hrm_r RSHIFT J  &hrm_r RCTRL K &hrm_r RALT L &hrm_tilde_caret RGUI 0 &acute_grave 
         &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B                 &kp N                 &kp M            &kp COMMA      &kp DOT       &kp FSLH                &none
                                                &none          &lt NUM TAB     &ht_shift LSHIFT RET   &ht_shift RSHIFT SPACE &ht_bspc SYM BSPC &kp DEL
@@ -207,8 +207,8 @@ behavior {
     symbols_layer {
       bindings = <
         &none  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR   &kp PLUS &kp COLON &kp EQUAL &kp SQT &kp DQT   &trans
-        &kp TAB &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT             &trans       &kp MINUS &kp LBRC  &kp LBKT &kp LPAR &kp PIPE &kp DQT
-        &none &trans   &kp K_VOL_UP &kp K_VOL_DN &kp K_MUTE        &trans       &kp UNDER &kp RBRC  &kp RBKT &kp RPAR &kp BSLH &kp SQT
+        &kp TAB &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT             &trans       &kp MINUS &kp LBRC  &kp LBKT &kp LPAR &kp PIPE &trans
+        &none &kp C_MUTE   &kp C_VOL_DN &kp C_VOL_UP &trans        &trans       &kp UNDER &kp RBRC  &kp RBKT &kp RPAR &kp BSLH &trans
                                  &kp LGUI &trans                   &trans          &trans   &trans    &kp RALT
       >;
     };
