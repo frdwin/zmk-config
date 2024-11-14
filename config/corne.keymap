@@ -56,6 +56,12 @@
       #binding-cells = <0>;
       bindings = <&kp DQT &kp SPC>;
     };
+    
+    m_sqt_spc: m_sqt_spc {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&kp SQT &kp SPC>;
+    };
   };
 
   /*
@@ -86,9 +92,15 @@
     };
 
     combo_dqt {
-      timeout-ms = <50>;
+      timeout-ms = <40>;
       key-positions = <7 8>;
       bindings = <&m_dqt_spc>;
+    };
+
+    combo_sqt {
+      timeout-ms = <40>;
+      key-positions = <8 9>;
+      bindings = <&m_sqt_spc>;
     };
   };
 
