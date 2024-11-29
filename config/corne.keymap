@@ -204,7 +204,7 @@ behavior {
         &kp TAB    &kp Q         &kp W         &kp E          &kp R           &kp T                  &kp Y                  &kp U             &kp I          &kp O         &kp P                   &kp DEL
         &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G                  &kp H                  &hrm_r RSHIFT J   &hrm_r RCTRL K &hrm_r RALT L &hrm_tilde_caret RGUI 0 &acute_grave 
         &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B                  &kp N                  &kp M             &kp COMMA      &kp DOT       &kp FSLH                &kp LG(LS(S))
-                                               &tog FN        &lt NUM RET     &ht_shift LSHIFT SPACE &ht_shift RSHIFT SPACE &ht_bspc SYM BSPC &kp DEL
+                                               &mo FN         &lt NUM RET     &ht_shift LSHIFT SPACE &ht_shift RSHIFT SPACE &ht_bspc SYM BSPC &kp DEL
       >;
     };
 
@@ -220,15 +220,15 @@ behavior {
     numbers_layer {
       bindings = <
   	    &kp TAB    &kp N1        &kp N2        &kp N3         &kp N4          &kp N5                &kp N6                &kp N7           &kp N8         &kp N9        &kp N0                    &kp DEL
-  	    &kp ESC    &kp PG_UP     &kp PG_DN     &kp HOME       &kp END         &kp FSLH              &kp LEFT              &kp DOWN         &kp UP         &kp RIGHT     &kp LPAR                  &trans
-  	    &none      &kp EXCL      &kp AT        &kp HASH       &kp DLLR        &kp PRCNT             &kp CARET             &kp AMPS         &kp ASTRK      &kp DOT       &kp RPAR                  &trans
-  	                                           &kp LGUI       &trans          &trans                &trans                &trans           &kp COMMA
+  	    &kp ESC    &kp PG_UP     &kp PG_DN     &kp HOME       &kp END         &none                 &kp LEFT              &kp DOWN         &kp UP         &kp RIGHT     &kp COMMA                  &trans
+  	    &none      &kp EXCL      &kp AT        &kp HASH       &kp DLLR        &kp PRCNT             &kp CARET             &kp AMPS         &kp ASTRK      &kp DOT       &kp FSLH                  &trans
+  	                                           &trans         &trans          &trans                &trans                &trans           &kp trans
       >;
     };
 
     symbols_layer {
       bindings = <
-        &none  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR   &kp PLUS &kp COLON &kp EQUAL &kp SQT &kp DQT   &trans
+        &none   &none    &none    &none     &none                  &none        &kp PLUS  &kp COLON &kp EQUAL &kp SQT &kp DQT   &trans
         &kp TAB &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT             &trans       &kp MINUS &kp LBRC  &kp LBKT &kp LPAR &kp PIPE &trans
         &none &kp C_MUTE   &kp C_VOL_DN &kp C_VOL_UP &trans        &trans       &kp UNDER &kp RBRC  &kp RBKT &kp RPAR &kp BSLH &trans
                                  &kp LGUI &trans                   &trans          &trans   &trans    &kp RALT
