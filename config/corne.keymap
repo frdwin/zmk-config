@@ -203,7 +203,7 @@ behavior {
       bindings = <
         &kp TAB    &kp Q         &kp W         &kp E          &kp R           &kp T                  &kp Y                  &kp U             &kp I          &kp O         &kp P                   &kp DEL
         &kp ESC    &hrm_l LGUI A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LSHIFT F &kp G                  &kp H                  &hrm_r RSHIFT J   &hrm_r RCTRL K &hrm_r RALT L &hrm_tilde_caret RGUI 0 &acute_grave 
-        &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B                  &kp N                  &kp M             &kp COMMA      &kp DOT       &kp FSLH                &kp LG(LS(S))
+        &caps_word &kp Z         &kp X         &kp C          &kp V           &kp B                  &kp N                  &kp M             &kp COMMA      &kp DOT       &kp FSLH                &kp LA(TAB)
                                                &mo FN         &lt NUM RET     &ht_shift LSHIFT SPACE &ht_shift RSHIFT SPACE &ht_bspc SYM BSPC &kp DEL
       >;
     };
@@ -212,7 +212,7 @@ behavior {
       bindings = <
         &kp F1     &kp F2        &kp F3        &kp F4         &kp F5          &kp F6                &kp F7                 &kp F8           &kp F9          &kp F10       &kp F11                 &kp F12 
         &kp PSCRN  &sk LGUI      &sk LALT      &sk LCTRL      &sk LSHIFT      &none                 &none                  &sk RSHIFT       &sk RCTRL       &sk RALT      &sk RGUI                &sys_reset
-        &kp INS    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2   &bt BT_SEL 3    &bt BT_CLR            &none                  &kp C_PP         &kp C_VOL_UP    &kp C_VOL_DN  &kp C_MUTE              &bootloader
+        &kp INS    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2   &bt BT_SEL 3    &bt BT_CLR            &none                  &kp C_PP         &kp C_VOL_DN    &kp C_VOL_UP  &kp C_MUTE              &bootloader
                                                &trans         &trans          &kp C_PREV            &kp C_NEXT             &trans           &trans
       >;
     };
@@ -220,8 +220,8 @@ behavior {
     numbers_layer {
       bindings = <
   	    &kp TAB    &kp N1        &kp N2        &kp N3         &kp N4          &kp N5                &kp N6                &kp N7           &kp N8         &kp N9        &kp N0                    &kp DEL
-  	    &kp ESC    &kp PG_UP     &kp PG_DN     &kp HOME       &kp END         &none                 &kp LEFT              &kp DOWN         &kp UP         &kp RIGHT     &kp COMMA                  &trans
-  	    &none      &kp EXCL      &kp AT        &kp HASH       &kp DLLR        &kp PRCNT             &kp CARET             &kp AMPS         &kp ASTRK      &kp DOT       &kp FSLH                  &trans
+  	    &kp ESC    &kp PG_UP     &kp PG_DN     &kp HOME       &kp END         &none                 &kp LEFT              &kp DOWN         &kp UP         &kp RIGHT     &kp COMMA                 &trans
+  	    &none      &kp EXCL      &kp AT        &kp HASH       &kp DLLR        &kp PRCNT             &kp CARET             &kp AMPS         &kp ASTRK      &kp DOT       &kp FSLH                  &kp LG(LS(S))
   	                                           &trans         &trans          &trans                &trans                &trans           &trans
       >;
     };
